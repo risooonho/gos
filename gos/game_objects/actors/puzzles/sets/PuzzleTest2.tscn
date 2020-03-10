@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://game_objects/primitive/Puzzle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game_objects/actors/puzzles/results/Gate.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_objects/actors/puzzles/conditions/Hittable_Switch.tscn" type="PackedScene" id=3]
+
+[node name="Puzzle" instance=ExtResource( 1 )]
+
+stay_activated = false
+
+[node name="Door" parent="." index="0" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+
+[node name="Body" parent="Door" index="0"]
+
+stationary = false
+
+[node name="Hittable Switch" parent="." index="1" instance=ExtResource( 3 )]
+
+[node name="Hittable Switch2" parent="." index="2" instance=ExtResource( 3 )]
+
+[node name="Hittable Switch3" parent="." index="3" instance=ExtResource( 3 )]
+
+[node name="Hittable Switch4" parent="." index="4" instance=ExtResource( 3 )]
+
+
+[editable path="Door"]

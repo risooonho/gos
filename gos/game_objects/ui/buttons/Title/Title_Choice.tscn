@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://game_objects/ui/buttons/Title/Title_Choice.gd" type="Script" id=1]
+[ext_resource path="res://game_objects/resources/title_text.tres" type="DynamicFont" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "press"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.051, 0.7 ),
+"transitions": PoolRealArray( 1, 0.170755, 3.13833 ),
+"update": 0,
+"values": [ Vector2( 0, 20.9 ), Vector2( 0, 10 ), Vector2( 0, 20.9 ) ]
+}
+
+[node name="Button" type="Button"]
+margin_right = 500.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 500, 40 )
+action_mode = 0
+flat = true
+script = ExtResource( 1 )
+
+[node name="Pivot" type="Position2D" parent="."]
+position = Vector2( 0, 20.9 )
+
+[node name="Label" type="Label" parent="Pivot"]
+margin_left = -2.85004
+margin_top = -7.59997
+margin_right = 83.15
+margin_bottom = 7.40003
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0.0862745, 0.0862745, 0.0862745, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = " Default Text"
+
+[node name="ColorRect" type="ColorRect" parent="Pivot/Label"]
+margin_top = 13.6722
+margin_right = 223.0
+margin_bottom = 14.6722
+mouse_filter = 2
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/press = SubResource( 1 )
+
+[connection signal="button_down" from="." to="." method="_on_Button_button_down"]
+[connection signal="mouse_entered" from="." to="." method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Button_mouse_exited"]

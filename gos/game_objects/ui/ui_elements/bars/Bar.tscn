@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/ui/bars/stamina_bar/ends.png" type="Texture" id=1]
+[ext_resource path="res://assets/ui/bars/stamina_bar/depleted.png" type="Texture" id=2]
+[ext_resource path="res://assets/ui/bars/stamina_bar/fill.png" type="Texture" id=3]
+
+[node name="Bar" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Back" type="Control" parent="."]
+margin_right = 46.0
+margin_bottom = 40.0
+
+[node name="Left" type="Sprite" parent="Back"]
+texture = ExtResource( 1 )
+centered = false
+region_rect = Rect2( 0, 0, 1, 10 )
+
+[node name="Middle" type="TextureRect" parent="Back"]
+anchor_right = 1.0
+margin_left = 1.0
+margin_right = 104.0
+margin_bottom = 10.0
+texture = ExtResource( 2 )
+stretch_mode = 2
+
+[node name="Right" type="Sprite" parent="Back"]
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( 150, 0 )
+flip_h = true
+region_rect = Rect2( 0, 0, 1, 10 )
+
+[node name="Front" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Front"]
+anchor_right = 1.0
+margin_left = 1.0
+margin_right = 37.0
+margin_bottom = 10.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 2
+

@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://game_objects/particles/Particle_System.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/effects/sphere16.png" type="Texture" id=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.475806, 0.951613 )
+colors = PoolColorArray( 0.875, 0.944336, 1, 1, 0.414124, 0.671966, 0.921875, 1, 0.155716, 0.345177, 0.613281, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 16, 16, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, -220, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.5
+color_ramp = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0.4406 ), 0.0, 0.0, 0, 0, Vector2( 0.241271, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.731848, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.5374 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 1
+emission_sphere_radius = 12.06
+flag_disable_z = true
+gravity = Vector3( 0, -60, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 195.6
+angle_random = 0.36
+scale = 2.0
+scale_curve = SubResource( 5 )
+
+[node name="Particle_System" index="0" instance=ExtResource( 1 )]
+
+[node name="Particles2D2" type="Particles2D" parent="Z_Axis" index="1"]
+self_modulate = Color( 1, 1, 1, 0.654902 )
+position = Vector2( 0, -21.5249 )
+amount = 58
+local_coords = false
+draw_order = 1
+process_material = SubResource( 3 )
+texture = ExtResource( 2 )
+
+[node name="Particles2D" type="Particles2D" parent="Z_Axis" index="2"]
+amount = 24
+local_coords = false
+process_material = SubResource( 6 )
+texture = ExtResource( 2 )
+

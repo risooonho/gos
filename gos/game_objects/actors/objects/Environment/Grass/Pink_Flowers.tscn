@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://game_objects/actors/objects/Environment/Grass/Yellow_Flowers.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game_objects/primitive/Node2D_Container.gd" type="Script" id=2]
+[ext_resource path="res://shaders/simple_wind_shader/shaders/wind_2d.shader" type="Shader" id=3]
+[ext_resource path="res://assets/foliage/flowers3.png" type="Texture" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/speed = 6.0
+shader_param/minStrength = 0.01
+shader_param/maxStrength = 0.08
+shader_param/strengthScale = 100.0
+shader_param/interval = 2.5
+shader_param/detail = 1.0
+shader_param/distortion = 0.1
+shader_param/heightOffset = 0.0
+shader_param/time_offset = 0.0
+
+[node name="Pink_Flowers" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Z_Axis" parent="Body" index="3"]
+position = Vector2( 0, 0 )
+
+[node name="Sprite" parent="Body/Z_Axis" index="1"]
+material = SubResource( 1 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+
+[editable path="Body/Hurtbox"]
+
+[editable path="Body/Hurtbox/Z_Axis"]

@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://game_objects/primitive/Node2D_Container.gd" type="Script" id=1]
+[ext_resource path="res://game_objects/actors/objects/Environment/Grass/Grass.gd" type="Script" id=2]
+[ext_resource path="res://game_objects/properties/Draw_Priority_Setting.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game_objects/primitive/Hurtbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_objects/primitive/Z_Axis.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/foliage/grass_cut.png" type="Texture" id=6]
+[ext_resource path="res://shaders/simple_wind_shader/shaders/wind_2d.shader" type="Shader" id=7]
+[ext_resource path="res://assets/foliage/x.png" type="Texture" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20.7998, 15.3001 )
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = ExtResource( 7 )
+shader_param/speed = 6.0
+shader_param/minStrength = 0.01
+shader_param/maxStrength = 0.08
+shader_param/strengthScale = 150.0
+shader_param/interval = 2.5
+shader_param/detail = 1.0
+shader_param/distortion = 0.1
+shader_param/heightOffset = 0.0
+shader_param/time_offset = 0.0
+
+[node name="Grass" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Body" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Draw_Priority_Point" type="Position2D" parent="Body"]
+position = Vector2( 0, 23.019 )
+
+[node name="Draw_Priority_Setting" parent="Body" instance=ExtResource( 3 )]
+
+[node name="Hurtbox" parent="Body" instance=ExtResource( 4 )]
+
+[node name="Area_Shape" parent="Body/Hurtbox" index="0"]
+shape = SubResource( 1 )
+
+[node name="Z_Height" parent="Body/Hurtbox/Z_Axis" index="0"]
+position = Vector2( 0, -58.9 )
+
+[node name="Z_Axis" parent="Body" instance=ExtResource( 5 )]
+
+[node name="Under" type="Sprite" parent="Body/Z_Axis"]
+visible = false
+scale = Vector2( 3, 3 )
+texture = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="Body/Z_Axis"]
+material = SubResource( 2 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 8 )
+
+
+[editable path="Body/Hurtbox"]
+
+[editable path="Body/Hurtbox/Z_Axis"]

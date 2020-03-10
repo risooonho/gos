@@ -1,0 +1,804 @@
+[gd_scene load_steps=44 format=2]
+
+[ext_resource path="res://game_objects/rooms/Room_Controller.gd" type="Script" id=1]
+[ext_resource path="res://game_objects/utilities/Cutscene_Manager.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_objects/ui/HUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game_objects/utilities/Cameraman.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_objects/actors/puzzles/sets/PuzzleTest2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game_objects/actors/puzzles/sets/TorchPuzzle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game_objects/actors/puzzles/sets/Puzzle.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game_objects/actors/puzzles/sets/LeverTest.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game_objects/actors/characters/vanylla/Player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game_objects/actors/objects/Object_Spawner.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game_objects/actors/characters/soul/Soul.tscn" type="PackedScene" id=11]
+[ext_resource path="res://game_objects/actors/objects/Pushable_Box.tscn" type="PackedScene" id=12]
+[ext_resource path="res://game_objects/primitive/Grabbable_Actor.tscn" type="PackedScene" id=13]
+[ext_resource path="res://icon.png" type="Texture" id=14]
+[ext_resource path="res://game_objects/actors/objects/Flammable_Wall.tscn" type="PackedScene" id=15]
+[ext_resource path="res://game_objects/actors/objects/Breakable_Box.tscn" type="PackedScene" id=16]
+[ext_resource path="res://game_objects/actors/objects/Grabbable_Bomb.tscn" type="PackedScene" id=17]
+[ext_resource path="res://game_objects/actors/objects/Explodable.tscn" type="PackedScene" id=18]
+[ext_resource path="res://game_objects/actors/characters/soul/Bomb_Soul.tscn" type="PackedScene" id=19]
+[ext_resource path="res://game_objects/actors/characters/npc/Npc_test.tscn" type="PackedScene" id=20]
+[ext_resource path="res://game_objects/actors/objects/Collectibles/Heart_Collectible.tscn" type="PackedScene" id=21]
+[ext_resource path="res://game_objects/actors/objects/Destroyables/Heart_Breakable_Box.tscn" type="PackedScene" id=22]
+[ext_resource path="res://game_objects/actors/objects/Collectibles/Stamina_Collectible.tscn" type="PackedScene" id=23]
+[ext_resource path="res://game_objects/actors/objects/Collectibles/Small_Key.tscn" type="PackedScene" id=24]
+[ext_resource path="res://game_objects/actors/objects/Collectibles/Essence.tscn" type="PackedScene" id=25]
+[ext_resource path="res://game_objects/actors/characters/enemy/Basic_Enemy.tscn" type="PackedScene" id=26]
+[ext_resource path="res://game_objects/actors/characters/enemy/Wandering_Soul.tscn" type="PackedScene" id=27]
+[ext_resource path="res://game_objects/primitive/Terrain.tscn" type="PackedScene" id=28]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Sprite
+
+#func _process(delta):
+#	var body_y_position = get_node(\"../..\").position.y
+#	set_z_index(body_y_position)"
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Position2D
+
+#func _process(delta):
+#	var body = get_node(\"../..\")
+#	set_z_index(body.position.y-body.get_node(\"Body_Shape\").shape.extents.y)
+#	set_z_index(-(body.get_node(\"Body_Shape\").shape.extents.y * 2))
+"
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 22.1686, 22.1701 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 56.2454, 50.0767 )
+
+[sub_resource type="Animation" id=5]
+length = 0.2
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_collected"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Z_Axis/Sprite_Offset:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 2.07053, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.2
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_collected"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Z_Axis/Sprite_Offset:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 2.07053, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.2
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_collected"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Z_Axis/Sprite_Offset:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 2.07053, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.2
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_collected"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Z_Axis/Sprite_Offset:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 2.07053, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.2
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_collected"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Z_Axis/Sprite_Offset:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 2.07053, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 84.8963, 75.2825 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 198.34, 89.6218 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 151.712, 85.0911 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 61.3929, 175.304 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 195.275, 97.0978 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 101.872, 33.1356 )
+
+[node name="World" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Cutscene_Manager" parent="." instance=ExtResource( 2 )]
+
+[node name="Background" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource( 3 )]
+
+[node name="Dialogue" parent="HUD/Dialogue_Box" index="2"]
+bbcode_text = "mou aresei polu to [color=red]fortnite[/color] exei plaka. to paizw kathe mera meta to [color=blue]sxoleio[/color]"
+text = "mou aresei polu to fortnite exei plaka. to paizw kathe mera meta to sxoleio"
+
+[node name="Essence_Counter" parent="HUD/Gameplay_HUD" index="5"]
+editor/display_folded = true
+
+[node name="Key_Counter" parent="HUD/Gameplay_HUD" index="6"]
+editor/display_folded = true
+
+[node name="Cutscene_Borders" parent="HUD" index="2"]
+editor/display_folded = true
+
+[node name="Cameraman" parent="." instance=ExtResource( 4 )]
+
+[node name="Camera2D" parent="Cameraman" index="0"]
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+
+[node name="Puzzles" type="Node" parent="."]
+
+[node name="Puzzle2" parent="Puzzles" instance=ExtResource( 5 )]
+editor/display_folded = true
+position = Vector2( 1909.35, 497.522 )
+stay_activated = true
+
+[node name="Hittable Switch" parent="Puzzles/Puzzle2" index="1"]
+position = Vector2( -98.4261, 141.487 )
+
+[node name="Body" parent="Puzzles/Puzzle2/Hittable Switch" index="0"]
+editor/display_folded = true
+stationary = false
+switch_type = 2
+timed_timer = 0.1
+
+[node name="Z_Axis" parent="Puzzles/Puzzle2/Hittable Switch/Body" index="7"]
+editor/display_folded = true
+position = Vector2( 0, -26.6571 )
+
+[node name="Hittable Switch2" parent="Puzzles/Puzzle2" index="2"]
+position = Vector2( 88.1735, 135.336 )
+
+[node name="Body" parent="Puzzles/Puzzle2/Hittable Switch2" index="0"]
+editor/display_folded = true
+stationary = false
+switch_type = 2
+timed_timer = 0.1
+
+[node name="Z_Axis" parent="Puzzles/Puzzle2/Hittable Switch2/Body" index="7"]
+position = Vector2( 0, -24.6066 )
+
+[node name="Hittable Switch3" parent="Puzzles/Puzzle2" index="3"]
+editor/display_folded = true
+position = Vector2( -108.679, 293.228 )
+
+[node name="Body" parent="Puzzles/Puzzle2/Hittable Switch3" index="0"]
+editor/display_folded = true
+stationary = false
+switch_type = 2
+timed_timer = 0.1
+
+[node name="Z_Axis" parent="Puzzles/Puzzle2/Hittable Switch3/Body" index="7"]
+position = Vector2( 0, -28.7076 )
+
+[node name="Hittable Switch4" parent="Puzzles/Puzzle2" index="4"]
+editor/display_folded = true
+position = Vector2( 96.3757, 293.228 )
+
+[node name="Body" parent="Puzzles/Puzzle2/Hittable Switch4" index="0"]
+stationary = false
+switch_type = 2
+timed_timer = 0.1
+
+[node name="Z_Axis" parent="Puzzles/Puzzle2/Hittable Switch4/Body" index="7"]
+position = Vector2( 0, -24.6066 )
+
+[node name="Puzzle3" parent="Puzzles" instance=ExtResource( 6 )]
+editor/display_folded = true
+position = Vector2( 231.525, 524.08 )
+stay_activated = true
+
+[node name="Torch" parent="Puzzles/Puzzle3" index="1"]
+position = Vector2( 153.601, 107.336 )
+
+[node name="Body" parent="Puzzles/Puzzle3/Torch" index="0"]
+stationary = false
+switch_type = 2
+timed_timer = 0.3
+
+[node name="Torch2" parent="Puzzles/Puzzle3" index="2"]
+position = Vector2( -61.0704, 103.635 )
+
+[node name="Body" parent="Puzzles/Puzzle3/Torch2" index="0"]
+editor/display_folded = true
+stationary = false
+switch_type = 2
+timed_timer = 0.3
+
+[node name="Puzzle" parent="Puzzles" instance=ExtResource( 7 )]
+editor/display_folded = true
+position = Vector2( 1128.88, -396.033 )
+
+[node name="Door" parent="Puzzles/Puzzle" index="0"]
+editor/display_folded = false
+position = Vector2( 54.0204, -149.784 )
+
+[node name="Body" parent="Puzzles/Puzzle/Door" index="0"]
+editor/display_folded = true
+
+[node name="Button" parent="Puzzles/Puzzle" index="1"]
+position = Vector2( -18.5062, 85.1285 )
+
+[node name="Body" parent="Puzzles/Puzzle/Button" index="0"]
+editor/display_folded = true
+switch_type = 2
+timed_timer = 3.0
+
+[node name="Button2" parent="Puzzles/Puzzle" index="2"]
+editor/display_folded = false
+position = Vector2( 148.05, 83.278 )
+
+[node name="Body" parent="Puzzles/Puzzle/Button2" index="0"]
+editor/display_folded = true
+switch_type = 2
+timed_timer = 3.0
+
+[node name="Puzzle4" parent="Puzzles" instance=ExtResource( 8 )]
+position = Vector2( 2267.52, -354.443 )
+
+[node name="Actors" type="Node" parent="."]
+
+[node name="Player" parent="Actors" instance=ExtResource( 9 )]
+editor/display_folded = true
+position = Vector2( 2098.48, 322.698 )
+
+[node name="Body" parent="Actors/Player" index="0"]
+editor/display_folded = true
+gravity_force = 1.7
+air_friction = 6.0
+
+[node name="Grabber" parent="Actors/Player/Body" index="4"]
+editor/display_folded = true
+
+[node name="Shadow" parent="Actors/Player/Body/Shadow_Offset" index="0"]
+script = SubResource( 1 )
+
+[node name="Sprite" parent="Actors/Player/Body/Z_Axis/Sprite_Offset" index="0"]
+position = Vector2( -2.15848, 0 )
+
+[node name="Item_Spawner" parent="Actors" instance=ExtResource( 10 )]
+editor/display_folded = true
+position = Vector2( 638.424, 311.845 )
+
+[node name="Body" parent="Actors/Item_Spawner" index="0"]
+object_to_spawn = ExtResource( 11 )
+
+[node name="Z_Axis" parent="Actors/Item_Spawner/Body" index="0"]
+position = Vector2( 0, -82.2584 )
+
+[node name="Pushable Box" parent="Actors" instance=ExtResource( 12 )]
+editor/display_folded = true
+position = Vector2( 349.794, -143.218 )
+
+[node name="Z_Height" parent="Actors/Pushable Box/Body/Z_Axis" index="0"]
+script = SubResource( 2 )
+
+[node name="Pushable Box2" parent="Actors" instance=ExtResource( 12 )]
+editor/display_folded = true
+position = Vector2( 856.837, -297.95 )
+
+[node name="Z_Axis" parent="Actors/Pushable Box2/Body" index="6"]
+position = Vector2( 0, -105.485 )
+
+[node name="Grabbable_Actor" parent="Actors" instance=ExtResource( 13 )]
+editor/display_folded = true
+
+[node name="Body" parent="Actors/Grabbable_Actor" index="0"]
+move_speed = 500.0
+gravity_force = 0.7
+ground_friction = 10.0
+air_friction = 10.0
+
+[node name="Grabbable" parent="Actors/Grabbable_Actor/Body" index="0"]
+thrown_force = 1000.0
+
+[node name="Body_Shape" parent="Actors/Grabbable_Actor/Body" index="2"]
+shape = SubResource( 3 )
+
+[node name="Z_Height" parent="Actors/Grabbable_Actor/Body/Z_Axis" index="0"]
+position = Vector2( 0, -38.863 )
+
+[node name="Sprite" type="Sprite" parent="Actors/Grabbable_Actor/Body/Z_Axis/Sprite_Offset" index="0"]
+texture = ExtResource( 14 )
+
+[node name="Flammable_Wall" parent="Actors" instance=ExtResource( 15 )]
+position = Vector2( 1428.01, -521.097 )
+
+[node name="Breakable_Box" parent="Actors" instance=ExtResource( 16 )]
+position = Vector2( -534.627, -722.359 )
+
+[node name="Breakable_Box2" parent="Actors" instance=ExtResource( 16 )]
+position = Vector2( -460.654, -724.04 )
+
+[node name="Breakable_Box3" parent="Actors" instance=ExtResource( 16 )]
+position = Vector2( -379.373, -725.272 )
+
+[node name="Breakable_Box4" parent="Actors" instance=ExtResource( 16 )]
+position = Vector2( 707.854, -253.891 )
+
+[node name="Breakable_Box5" parent="Actors" instance=ExtResource( 16 )]
+position = Vector2( 644.385, -254.505 )
+
+[node name="Breakable_Box6" parent="Actors" instance=ExtResource( 16 )]
+position = Vector2( 710.267, -313.167 )
+
+[node name="Breakable_Box7" parent="Actors" instance=ExtResource( 16 )]
+position = Vector2( 646.19, -311.362 )
+
+[node name="Grabbable_Bomb" parent="Actors" instance=ExtResource( 17 )]
+editor/display_folded = true
+position = Vector2( 1006.46, -28.0128 )
+
+[node name="Body" parent="Actors/Grabbable_Bomb" index="0"]
+collision_layer = 4
+
+[node name="Grabbable_Bomb2" parent="Actors" instance=ExtResource( 17 )]
+editor/display_folded = true
+position = Vector2( 1100.79, -28.0129 )
+
+[node name="Grabbable_Bomb3" parent="Actors" instance=ExtResource( 17 )]
+editor/display_folded = true
+position = Vector2( 789.104, 8.89709 )
+
+[node name="Grabbable_Bomb4" parent="Actors" instance=ExtResource( 17 )]
+editor/display_folded = true
+position = Vector2( 1193.06, -13.659 )
+
+[node name="Explodable" parent="Actors" instance=ExtResource( 18 )]
+editor/display_folded = true
+position = Vector2( 1353.36, -20.5056 )
+
+[node name="Item_Spawner2" parent="Actors" instance=ExtResource( 10 )]
+editor/display_folded = true
+position = Vector2( 1814.74, 28.7077 )
+
+[node name="Body" parent="Actors/Item_Spawner2" index="0"]
+object_to_spawn = ExtResource( 19 )
+
+[node name="Z_Axis" parent="Actors/Item_Spawner2/Body" index="0"]
+position = Vector2( 0, -59.4659 )
+
+[node name="Actor" parent="Actors" instance=ExtResource( 20 )]
+editor/display_folded = true
+position = Vector2( 2120.81, 112.888 )
+
+[node name="Body" parent="Actors/Actor" index="0"]
+editor/display_folded = true
+collision_layer = 4
+dialogue_id = "0001"
+
+[node name="Interactable" parent="Actors/Actor/Body" index="2"]
+editor/display_folded = true
+interact_label_string = "Talk"
+
+[node name="Area" parent="Actors/Actor/Body/Interactable" index="0"]
+editor/display_folded = true
+
+[node name="Area_Shape" parent="Actors/Actor/Body/Interactable/Area" index="0"]
+shape = SubResource( 4 )
+
+[node name="Label" parent="Actors/Actor/Body/Interactable" index="1"]
+editor/display_folded = true
+
+[node name="Heart_Collectible" parent="Actors" instance=ExtResource( 21 )]
+position = Vector2( 2593.24, 271.996 )
+
+[node name="Heart_Collectible9" parent="Actors" instance=ExtResource( 21 )]
+position = Vector2( 2664.33, 386.359 )
+
+[node name="Heart_Collectible5" parent="Actors" instance=ExtResource( 21 )]
+position = Vector2( 2692.15, 213.27 )
+
+[node name="Heart_Collectible13" parent="Actors" instance=ExtResource( 21 )]
+position = Vector2( 2763.24, 327.632 )
+
+[node name="Heart_Collectible3" parent="Actors" instance=ExtResource( 21 )]
+position = Vector2( 2651.96, 309.087 )
+
+[node name="Heart_Collectible10" parent="Actors" instance=ExtResource( 21 )]
+position = Vector2( 2723.05, 423.449 )
+
+[node name="Heart_Collectible6" parent="Actors" instance=ExtResource( 21 )]
+position = Vector2( 2750.87, 250.36 )
+
+[node name="Heart_Collectible16" parent="Actors" instance=ExtResource( 21 )]
+position = Vector2( 2821.96, 364.722 )
+
+[node name="Heart_Collectible2" parent="Actors" instance=ExtResource( 21 )]
+position = Vector2( 2636.51, 225.633 )
+
+[node name="Heart_Collectible11" parent="Actors" instance=ExtResource( 21 )]
+position = Vector2( 2707.6, 339.995 )
+
+[node name="Heart_Collectible7" parent="Actors" instance=ExtResource( 21 )]
+position = Vector2( 2735.42, 166.907 )
+
+[node name="Heart_Collectible14" parent="Actors" instance=ExtResource( 21 )]
+position = Vector2( 2806.51, 281.269 )
+
+[node name="Heart_Collectible4" parent="Actors" instance=ExtResource( 21 )]
+position = Vector2( 2695.24, 262.724 )
+
+[node name="Heart_Collectible12" parent="Actors" instance=ExtResource( 21 )]
+position = Vector2( 2766.33, 377.086 )
+
+[node name="Heart_Collectible8" parent="Actors" instance=ExtResource( 21 )]
+position = Vector2( 2794.14, 203.997 )
+
+[node name="Heart_Collectible15" parent="Actors" instance=ExtResource( 21 )]
+position = Vector2( 2865.23, 318.359 )
+
+[node name="Heart_Breakable_Box" parent="Actors" instance=ExtResource( 22 )]
+position = Vector2( 2541.85, 93.9698 )
+
+[node name="Heart_Breakable_Box2" parent="Actors" instance=ExtResource( 22 )]
+position = Vector2( 2615.69, 55.2919 )
+
+[node name="Heart_Breakable_Box3" parent="Actors" instance=ExtResource( 22 )]
+position = Vector2( 2710.62, 42.9853 )
+
+[node name="Heart_Breakable_Box4" parent="Actors" instance=ExtResource( 22 )]
+position = Vector2( 2809.08, 58.8081 )
+
+[node name="Collectible" parent="Actors" instance=ExtResource( 23 )]
+position = Vector2( 2290.34, 346.178 )
+
+[node name="Collectible2" parent="Actors" instance=ExtResource( 24 )]
+position = Vector2( 2305.79, 169.998 )
+
+[node name="Collectible3" parent="Actors" instance=ExtResource( 25 )]
+position = Vector2( 2655.81, 747.386 )
+
+[node name="Body" parent="Actors/Collectible3" index="0"]
+collision_mask = 3
+
+[node name="Collectible4" parent="Actors" instance=ExtResource( 25 )]
+position = Vector2( 2918.42, 770.992 )
+
+[node name="Body" parent="Actors/Collectible4" index="0"]
+collision_mask = 3
+essence_color = 3
+
+[node name="AnimationPlayer" parent="Actors/Collectible4/Body" index="1"]
+anims/shrink = SubResource( 5 )
+
+[node name="Collectible8" parent="Actors" instance=ExtResource( 25 )]
+position = Vector2( 2697.12, 965.738 )
+
+[node name="Body" parent="Actors/Collectible8" index="0"]
+collision_mask = 3
+essence_color = 3
+
+[node name="AnimationPlayer" parent="Actors/Collectible8/Body" index="1"]
+anims/shrink = SubResource( 6 )
+
+[node name="Collectible5" parent="Actors" instance=ExtResource( 25 )]
+position = Vector2( 3263.65, 974.59 )
+
+[node name="Body" parent="Actors/Collectible5" index="0"]
+collision_mask = 3
+essence_color = 1
+
+[node name="AnimationPlayer" parent="Actors/Collectible5/Body" index="1"]
+anims/shrink = SubResource( 7 )
+
+[node name="Collectible6" parent="Actors" instance=ExtResource( 25 )]
+position = Vector2( 3183.98, 794.597 )
+
+[node name="Body" parent="Actors/Collectible6" index="0"]
+collision_mask = 3
+essence_color = 1
+
+[node name="AnimationPlayer" parent="Actors/Collectible6/Body" index="1"]
+anims/shrink = SubResource( 8 )
+
+[node name="Collectible7" parent="Actors" instance=ExtResource( 25 )]
+editor/display_folded = true
+position = Vector2( 2974.48, 998.196 )
+
+[node name="Body" parent="Actors/Collectible7" index="0"]
+editor/display_folded = true
+collision_mask = 3
+essence_color = 5
+
+[node name="AnimationPlayer" parent="Actors/Collectible7/Body" index="1"]
+anims/shrink = SubResource( 9 )
+
+[node name="Basic_Enemy" parent="Actors" instance=ExtResource( 26 )]
+position = Vector2( 2301.55, 563.585 )
+
+[node name="Actor2" parent="Actors" instance=ExtResource( 27 )]
+position = Vector2( 3919.12, 516.798 )
+
+[node name="Terrain" type="Node" parent="."]
+
+[node name="Terrain" parent="Terrain" instance=ExtResource( 28 )]
+editor/display_folded = true
+position = Vector2( 835.666, 332.031 )
+
+[node name="Body_Shape" parent="Terrain/Terrain/Body" index="1"]
+shape = SubResource( 10 )
+
+[node name="Z_Axis" parent="Terrain/Terrain/Body" index="3"]
+position = Vector2( 0, -5.61212 )
+
+[node name="Z_Height" parent="Terrain/Terrain/Body/Z_Axis" index="0"]
+position = Vector2( 0, -81.4824 )
+
+[node name="Terrain2" parent="Terrain" instance=ExtResource( 28 )]
+editor/display_folded = true
+position = Vector2( 719.455, 331.489 )
+
+[node name="Body_Shape" parent="Terrain/Terrain2/Body" index="1"]
+shape = SubResource( 11 )
+
+[node name="Z_Height" parent="Terrain/Terrain2/Body/Z_Axis" index="0"]
+position = Vector2( 0, -40 )
+
+[node name="Terrain3" parent="Terrain" instance=ExtResource( 28 )]
+editor/display_folded = true
+position = Vector2( 893.849, -310.904 )
+
+[node name="Body_Shape" parent="Terrain/Terrain3/Body" index="1"]
+shape = SubResource( 12 )
+
+[node name="Z_Height" parent="Terrain/Terrain3/Body/Z_Axis" index="0"]
+position = Vector2( 0, -92.5309 )
+
+[node name="Terrain4" parent="Terrain" instance=ExtResource( 28 )]
+editor/display_folded = true
+position = Vector2( -193.85, 266.859 )
+
+[node name="Body_Shape" parent="Terrain/Terrain4/Body" index="1"]
+shape = SubResource( 13 )
+
+[node name="Z_Height" parent="Terrain/Terrain4/Body/Z_Axis" index="0"]
+position = Vector2( 0, -184.161 )
+
+[node name="Terrain5" parent="Terrain" instance=ExtResource( 28 )]
+position = Vector2( 3160.88, 142.942 )
+
+[node name="Body_Shape" parent="Terrain/Terrain5/Body" index="1"]
+shape = SubResource( 14 )
+
+[node name="Z_Axis" parent="Terrain/Terrain5/Body" index="3"]
+position = Vector2( 0, -119.949 )
+
+[node name="Z_Height" parent="Terrain/Terrain5/Body/Z_Axis" index="0"]
+position = Vector2( 0, -40 )
+
+[node name="Terrain6" parent="Terrain" instance=ExtResource( 28 )]
+position = Vector2( 3250.6, 19.8151 )
+
+[node name="Body_Shape" parent="Terrain/Terrain6/Body" index="1"]
+shape = SubResource( 15 )
+
+[node name="Z_Height" parent="Terrain/Terrain6/Body/Z_Axis" index="0"]
+position = Vector2( 0, -58.8088 )
+
+[node name="Effects" type="Node" parent="."]
+
+
+[editable path="HUD"]
+
+[editable path="HUD/Dialogue_Box"]
+
+[editable path="HUD/Gameplay_HUD"]
+
+[editable path="HUD/Gameplay_HUD/Essence_Counter"]
+
+[editable path="HUD/Gameplay_HUD/Key_Counter"]
+
+[editable path="HUD/Cutscene_Borders"]
+
+[editable path="Cameraman"]
+
+[editable path="Puzzles/Puzzle2"]
+
+[editable path="Puzzles/Puzzle2/Hittable Switch"]
+
+[editable path="Puzzles/Puzzle2/Hittable Switch2"]
+
+[editable path="Puzzles/Puzzle2/Hittable Switch3"]
+
+[editable path="Puzzles/Puzzle2/Hittable Switch4"]
+
+[editable path="Puzzles/Puzzle3"]
+
+[editable path="Puzzles/Puzzle3/Torch"]
+
+[editable path="Puzzles/Puzzle3/Torch2"]
+
+[editable path="Puzzles/Puzzle"]
+
+[editable path="Puzzles/Puzzle/Door"]
+
+[editable path="Puzzles/Puzzle/Button"]
+
+[editable path="Puzzles/Puzzle/Button2"]
+
+[editable path="Actors/Player"]
+
+[editable path="Actors/Player/Body/Grabber"]
+
+[editable path="Actors/Item_Spawner"]
+
+[editable path="Actors/Pushable Box"]
+
+[editable path="Actors/Pushable Box/Body/Body_Area"]
+
+[editable path="Actors/Pushable Box/Body/Z_Axis"]
+
+[editable path="Actors/Pushable Box2"]
+
+[editable path="Actors/Grabbable_Actor"]
+
+[editable path="Actors/Grabbable_Actor/Body/Z_Axis"]
+
+[editable path="Actors/Grabbable_Bomb"]
+
+[editable path="Actors/Explodable"]
+
+[editable path="Actors/Item_Spawner2"]
+
+[editable path="Actors/Actor"]
+
+[editable path="Actors/Actor/Body/Interactable"]
+
+[editable path="Actors/Actor/Body/Interactable/Area"]
+
+[editable path="Actors/Collectible3"]
+
+[editable path="Actors/Collectible4"]
+
+[editable path="Actors/Collectible8"]
+
+[editable path="Actors/Collectible5"]
+
+[editable path="Actors/Collectible6"]
+
+[editable path="Actors/Collectible7"]
+
+[editable path="Actors/Basic_Enemy"]
+
+[editable path="Actors/Basic_Enemy/Body/Stats"]
+
+[editable path="Terrain/Terrain"]
+
+[editable path="Terrain/Terrain/Body/Z_Axis"]
+
+[editable path="Terrain/Terrain2"]
+
+[editable path="Terrain/Terrain2/Body/Z_Axis"]
+
+[editable path="Terrain/Terrain3"]
+
+[editable path="Terrain/Terrain3/Body/Z_Axis"]
+
+[editable path="Terrain/Terrain4"]
+
+[editable path="Terrain/Terrain4/Body/Z_Axis"]
+
+[editable path="Terrain/Terrain5"]
+
+[editable path="Terrain/Terrain5/Body/Z_Axis"]
+
+[editable path="Terrain/Terrain6"]
+
+[editable path="Terrain/Terrain6/Body/Z_Axis"]

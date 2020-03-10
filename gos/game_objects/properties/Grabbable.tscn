@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game_objects/properties/Grabbable.gd" type="Script" id=1]
+
+[node name="Grabbable" type="Node"]
+
+script = ExtResource( 1 )
+thrown_force = 0
+gravity_when_thrown = false
+
+

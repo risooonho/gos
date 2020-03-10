@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game_objects/ui/confirmations/Confirmation_Box.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game_objects/ui/confirmations/Return_to_Title_Confirmation.gd" type="Script" id=2]
+
+[node name="Return_To_Title_Confirmation" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Confirmation" parent="Box" index="0"]
+text = "Return to title?"
+
+[connection signal="cancel_pressed" from="." to="." method="_on_Confirmation_Box_cancel_pressed"]
+[connection signal="confirm_pressed" from="." to="." method="_on_Confirmation_Box_confirm_pressed"]

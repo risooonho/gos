@@ -1,0 +1,166 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://game_objects/rooms/Menus/Title_Screen_Controller.gd" type="Script" id=1]
+[ext_resource path="res://game_objects/ui/ui_elements/Fade_Out_In.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_objects/rooms/Menus/Menu_Choices.gd" type="Script" id=3]
+[ext_resource path="res://game_objects/ui/buttons/Title/Title_Choice.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_objects/utilities/Dragging_Camera.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "entrance"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 0.466516, 1 ),
+"update": 0,
+"values": [ Vector2( 640, 900 ), Vector2( 640, 360 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "exit"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 0.329877, 1 ),
+"update": 0,
+"values": [ Vector2( 640, 360 ), Vector2( 640, -120 ) ]
+}
+
+[node name="Title" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Unscrollable" type="CanvasLayer" parent="."]
+
+[node name="Fade_Out_In" parent="Unscrollable" instance=ExtResource( 2 )]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Container" type="VBoxContainer" parent="."]
+margin_left = 120.0
+margin_top = 80.0
+margin_right = 1279.0
+margin_bottom = 640.0
+
+[node name="Title_Texture" type="TextureRect" parent="Container"]
+margin_right = 1159.0
+
+[node name="Version" type="Label" parent="Container"]
+margin_top = 4.0
+margin_right = 1159.0
+margin_bottom = 18.0
+
+[node name="Title_Choices" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1018.9
+margin_top = 211.698
+margin_right = 434.899
+margin_bottom = -172.302
+script = ExtResource( 3 )
+
+[node name="Button" parent="Title_Choices" instance=ExtResource( 4 )]
+margin_right = 695.0
+margin_bottom = 40.0
+press_action = "continue"
+
+[node name="Label" parent="Title_Choices/Button/Pivot" index="0"]
+text = " Continue"
+
+[node name="Button2" parent="Title_Choices" instance=ExtResource( 4 )]
+margin_top = 44.0
+margin_right = 695.0
+margin_bottom = 84.0
+press_action = "new"
+
+[node name="Label" parent="Title_Choices/Button2/Pivot" index="0"]
+text = " New Game"
+
+[node name="Button3" parent="Title_Choices" instance=ExtResource( 4 )]
+margin_top = 88.0
+margin_right = 695.0
+margin_bottom = 128.0
+press_action = "settings"
+
+[node name="Label" parent="Title_Choices/Button3/Pivot" index="0"]
+text = " Settings"
+
+[node name="Button4" parent="Title_Choices" instance=ExtResource( 4 )]
+margin_top = 132.0
+margin_right = 695.0
+margin_bottom = 172.0
+press_action = "about"
+
+[node name="Label" parent="Title_Choices/Button4/Pivot" index="0"]
+text = " About"
+
+[node name="Button5" parent="Title_Choices" instance=ExtResource( 4 )]
+margin_top = 176.0
+margin_right = 695.0
+margin_bottom = 216.0
+press_action = "credits"
+
+[node name="Label" parent="Title_Choices/Button5/Pivot" index="0"]
+text = " Credits"
+
+[node name="Button6" parent="Title_Choices" instance=ExtResource( 4 )]
+margin_top = 220.0
+margin_right = 695.0
+margin_bottom = 260.0
+press_action = "changelog"
+
+[node name="Label" parent="Title_Choices/Button6/Pivot" index="0"]
+text = " Changelog"
+
+[node name="Button7" parent="Title_Choices" instance=ExtResource( 4 )]
+margin_top = 264.0
+margin_right = 695.0
+margin_bottom = 304.0
+press_action = "quit"
+
+[node name="Label" parent="Title_Choices/Button7/Pivot" index="0"]
+text = " Quit"
+
+[node name="Camera" parent="." instance=ExtResource( 5 )]
+
+[node name="Title_Animations" type="AnimationPlayer" parent="."]
+anims/entrance = SubResource( 1 )
+anims/exit = SubResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 405.323
+margin_top = 256.788
+margin_right = 445.323
+margin_bottom = 296.788
+
+[connection signal="animation_finished" from="Title_Animations" to="." method="_on_Title_Animations_animation_finished"]
+[connection signal="animation_started" from="Title_Animations" to="." method="_on_Title_Animations_animation_started"]
+
+[editable path="Title_Choices/Button"]
+
+[editable path="Title_Choices/Button2"]
+
+[editable path="Title_Choices/Button3"]
+
+[editable path="Title_Choices/Button4"]
+
+[editable path="Title_Choices/Button5"]
+
+[editable path="Title_Choices/Button6"]
+
+[editable path="Title_Choices/Button7"]
+
+[editable path="Camera"]

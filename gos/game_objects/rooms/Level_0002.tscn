@@ -1,0 +1,436 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://game_objects/rooms/World.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game_objects/actors/objects/Pushable_Box.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_objects/utilities/Level_Entrance.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game_objects/utilities/Level_Changer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_objects/actors/objects/Collectibles/Stamina_Collectible.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game_objects/actors/objects/Collectibles/Small_Key.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game_objects/actors/objects/Collectibles/Essence.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game_objects/actors/objects/Object_Spawner.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game_objects/actors/characters/soul/Bomb_Soul.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game_objects/actors/characters/soul/Soul.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game_objects/actors/characters/enemy/Wandering_Soul.tscn" type="PackedScene" id=11]
+[ext_resource path="res://game_objects/actors/objects/Interactable/Vertical_Sliding_Door.tscn" type="PackedScene" id=12]
+[ext_resource path="res://game_objects/actors/objects/Interactable/Locked_Vertical_Sliding_Door.tscn" type="PackedScene" id=13]
+[ext_resource path="res://game_objects/primitive/Grabbable_Actor.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/actor_default.png" type="Texture" id=15]
+[ext_resource path="res://game_objects/actors/puzzles/sets/Puzzle.tscn" type="PackedScene" id=16]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 30.0831, 131.967 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "shrink"
+length = 0.2
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_collected"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Z_Axis/Sprite_Offset:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 2.07053, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 19.8011, 20.292 )
+
+[node name="World" index="0" instance=ExtResource( 1 )]
+level_name = "Block Land"
+
+[node name="Pushable Box19" parent="." index="1" instance=ExtResource( 2 )]
+position = Vector2( -251.749, 823.906 )
+
+[node name="Pushable Box34" parent="." index="2" instance=ExtResource( 2 )]
+position = Vector2( -251.749, -52.3118 )
+
+[node name="Pushable Box63" parent="." index="3" instance=ExtResource( 2 )]
+position = Vector2( -251.749, 660.433 )
+
+[node name="Pushable Box65" parent="." index="4" instance=ExtResource( 2 )]
+position = Vector2( -251.749, -215.785 )
+
+[node name="Pushable Box28" parent="." index="5" instance=ExtResource( 2 )]
+position = Vector2( 1078.93, 823.906 )
+
+[node name="Pushable Box59" parent="." index="6" instance=ExtResource( 2 )]
+position = Vector2( 1078.93, -52.3118 )
+
+[node name="Pushable Box81" parent="." index="7" instance=ExtResource( 2 )]
+position = Vector2( 1078.93, -46.6118 )
+
+[node name="Z_Axis" parent="Pushable Box81/Body" index="6"]
+position = Vector2( 0, -213.427 )
+
+[node name="Pushable Box46" parent="." index="8" instance=ExtResource( 2 )]
+position = Vector2( 1078.93, 660.433 )
+
+[node name="Pushable Box60" parent="." index="9" instance=ExtResource( 2 )]
+position = Vector2( 1078.93, -390.486 )
+
+[node name="Pushable Box17" parent="." index="10" instance=ExtResource( 2 )]
+position = Vector2( 418.492, 823.906 )
+
+[node name="Pushable Box68" parent="." index="11" instance=ExtResource( 2 )]
+position = Vector2( 418.492, -52.3118 )
+
+[node name="Pushable Box61" parent="." index="12" instance=ExtResource( 2 )]
+position = Vector2( 418.492, 660.433 )
+
+[node name="Pushable Box66" parent="." index="13" instance=ExtResource( 2 )]
+position = Vector2( 418.492, -215.785 )
+
+[node name="Pushable Box29" parent="." index="14" instance=ExtResource( 2 )]
+position = Vector2( 1749.17, 823.906 )
+
+[node name="Pushable Box37" parent="." index="15" instance=ExtResource( 2 )]
+position = Vector2( 1749.17, -52.3118 )
+
+[node name="Pushable Box49" parent="." index="16" instance=ExtResource( 2 )]
+position = Vector2( 1749.17, 660.433 )
+
+[node name="Pushable Box55" parent="." index="17" instance=ExtResource( 2 )]
+position = Vector2( 1749.17, -215.785 )
+
+[node name="Pushable Box20" parent="." index="18" instance=ExtResource( 2 )]
+position = Vector2( 85.0064, 823.906 )
+
+[node name="Pushable Box39" parent="." index="19" instance=ExtResource( 2 )]
+position = Vector2( 85.0064, -52.3118 )
+
+[node name="Pushable Box50" parent="." index="20" instance=ExtResource( 2 )]
+position = Vector2( 85.0064, 660.433 )
+
+[node name="Pushable Box58" parent="." index="21" instance=ExtResource( 2 )]
+position = Vector2( 85.0064, -215.785 )
+
+[node name="Pushable Box26" parent="." index="22" instance=ExtResource( 2 )]
+position = Vector2( 1415.68, 823.906 )
+
+[node name="Pushable Box57" parent="." index="23" instance=ExtResource( 2 )]
+position = Vector2( 1415.68, -52.3118 )
+
+[node name="Pushable Box48" parent="." index="24" instance=ExtResource( 2 )]
+position = Vector2( 1415.68, 660.433 )
+
+[node name="Pushable Box56" parent="." index="25" instance=ExtResource( 2 )]
+position = Vector2( 1415.68, -215.785 )
+
+[node name="Pushable Box18" parent="." index="26" instance=ExtResource( 2 )]
+position = Vector2( 755.248, 823.906 )
+
+[node name="Pushable Box38" parent="." index="27" instance=ExtResource( 2 )]
+position = Vector2( 755.248, -52.3118 )
+
+[node name="Pushable Box62" parent="." index="28" instance=ExtResource( 2 )]
+position = Vector2( 755.248, 660.433 )
+
+[node name="Pushable Box67" parent="." index="29" instance=ExtResource( 2 )]
+position = Vector2( 755.248, -215.785 )
+
+[node name="Pushable Box25" parent="." index="30" instance=ExtResource( 2 )]
+position = Vector2( 2085.92, 823.906 )
+
+[node name="Pushable Box33" parent="." index="31" instance=ExtResource( 2 )]
+position = Vector2( 2085.92, -52.3118 )
+
+[node name="Pushable Box47" parent="." index="32" instance=ExtResource( 2 )]
+position = Vector2( 2085.92, 660.433 )
+
+[node name="Pushable Box52" parent="." index="33" instance=ExtResource( 2 )]
+position = Vector2( 2085.92, -215.785 )
+
+[node name="Pushable Box21" parent="." index="34" instance=ExtResource( 2 )]
+position = Vector2( -88.2755, 823.906 )
+
+[node name="Pushable Box36" parent="." index="35" instance=ExtResource( 2 )]
+position = Vector2( -88.2755, -52.3118 )
+
+[node name="Pushable Box51" parent="." index="36" instance=ExtResource( 2 )]
+position = Vector2( -88.2755, 660.433 )
+
+[node name="Pushable Box54" parent="." index="37" instance=ExtResource( 2 )]
+position = Vector2( -88.2755, -215.785 )
+
+[node name="Pushable Box27" parent="." index="38" instance=ExtResource( 2 )]
+position = Vector2( 1242.4, 823.906 )
+
+[node name="Pushable Box35" parent="." index="39" instance=ExtResource( 2 )]
+position = Vector2( 1242.4, -52.3118 )
+
+[node name="Pushable Box45" parent="." index="40" instance=ExtResource( 2 )]
+position = Vector2( 1242.4, 660.433 )
+
+[node name="Pushable Box53" parent="." index="41" instance=ExtResource( 2 )]
+position = Vector2( 1242.4, -215.785 )
+
+[node name="Pushable Box23" parent="." index="42" instance=ExtResource( 2 )]
+position = Vector2( 581.966, 823.906 )
+
+[node name="Pushable Box70" parent="." index="43" instance=ExtResource( 2 )]
+position = Vector2( 581.966, -52.3118 )
+
+[node name="Pushable Box41" parent="." index="44" instance=ExtResource( 2 )]
+position = Vector2( 581.966, 660.433 )
+
+[node name="Pushable Box71" parent="." index="45" instance=ExtResource( 2 )]
+position = Vector2( 581.966, -215.785 )
+
+[node name="Pushable Box31" parent="." index="46" instance=ExtResource( 2 )]
+position = Vector2( 1912.64, 823.906 )
+
+[node name="Pushable Box69" parent="." index="47" instance=ExtResource( 2 )]
+position = Vector2( 1912.64, -52.3118 )
+
+[node name="Pushable Box44" parent="." index="48" instance=ExtResource( 2 )]
+position = Vector2( 1912.64, 660.433 )
+
+[node name="Pushable Box72" parent="." index="49" instance=ExtResource( 2 )]
+position = Vector2( 1912.64, -215.785 )
+
+[node name="Pushable Box22" parent="." index="50" instance=ExtResource( 2 )]
+position = Vector2( 248.48, 823.906 )
+
+[node name="Pushable Box74" parent="." index="51" instance=ExtResource( 2 )]
+position = Vector2( 248.48, -52.3118 )
+
+[node name="Pushable Box40" parent="." index="52" instance=ExtResource( 2 )]
+position = Vector2( 248.48, 660.433 )
+
+[node name="Pushable Box73" parent="." index="53" instance=ExtResource( 2 )]
+position = Vector2( 248.48, -215.785 )
+
+[node name="Pushable Box30" parent="." index="54" instance=ExtResource( 2 )]
+position = Vector2( 1579.15, 823.906 )
+
+[node name="Pushable Box76" parent="." index="55" instance=ExtResource( 2 )]
+position = Vector2( 1579.15, -52.3118 )
+
+[node name="Pushable Box43" parent="." index="56" instance=ExtResource( 2 )]
+position = Vector2( 1579.15, 660.433 )
+
+[node name="Pushable Box77" parent="." index="57" instance=ExtResource( 2 )]
+position = Vector2( 1579.15, -215.785 )
+
+[node name="Pushable Box24" parent="." index="58" instance=ExtResource( 2 )]
+position = Vector2( 918.721, 823.906 )
+
+[node name="Pushable Box78" parent="." index="59" instance=ExtResource( 2 )]
+position = Vector2( 918.721, -52.3118 )
+
+[node name="Pushable Box42" parent="." index="60" instance=ExtResource( 2 )]
+position = Vector2( 918.721, 660.433 )
+
+[node name="Pushable Box75" parent="." index="61" instance=ExtResource( 2 )]
+position = Vector2( 918.721, -215.785 )
+
+[node name="Pushable Box32" parent="." index="62" instance=ExtResource( 2 )]
+position = Vector2( 2249.4, 823.906 )
+
+[node name="Pushable Box79" parent="." index="63" instance=ExtResource( 2 )]
+position = Vector2( 2249.4, -52.3118 )
+
+[node name="Pushable Box64" parent="." index="64" instance=ExtResource( 2 )]
+position = Vector2( 2249.4, 660.433 )
+
+[node name="Pushable Box80" parent="." index="65" instance=ExtResource( 2 )]
+position = Vector2( 2249.4, -215.785 )
+
+[node name="Level_Entrance1" parent="." index="66" instance=ExtResource( 3 )]
+position = Vector2( 1238.53, -43.6666 )
+
+[node name="Z_Axis" parent="Level_Entrance1" index="1"]
+position = Vector2( 0, -142.205 )
+
+[node name="Area" parent="." index="67" instance=ExtResource( 4 )]
+position = Vector2( 0, 209.246 )
+
+[node name="Area_Shape" parent="Area" index="0"]
+shape = SubResource( 1 )
+
+[node name="Z_Axis" parent="Area" index="1"]
+position = Vector2( -1.75806, 0 )
+
+[node name="Z_Height" parent="Area/Z_Axis" index="0"]
+position = Vector2( 0, -49.0421 )
+
+[node name="Level_Exit" parent="Area" index="2"]
+level_destination = "0002"
+destination_entrance = 2
+change_delay = 0.8
+
+[node name="Player_Transition_Animations" parent="Area/Level_Exit" index="0"]
+animation = 1
+direction = 1
+
+[node name="Level_Entrance2" parent="." index="68" instance=ExtResource( 3 )]
+position = Vector2( -618.847, -374.592 )
+
+[node name="Player_Transition_Animations" parent="Level_Entrance2" index="0"]
+animation = 1
+direction = 4
+
+[node name="Collectible" parent="." index="69" instance=ExtResource( 5 )]
+position = Vector2( 585.328, 164.082 )
+
+[node name="Collectible2" parent="." index="70" instance=ExtResource( 6 )]
+position = Vector2( 402.514, 312.324 )
+
+[node name="Collectible3" parent="." index="71" instance=ExtResource( 7 )]
+position = Vector2( 704.817, 320.675 )
+
+[node name="Body" parent="Collectible3" index="0"]
+essence_color = 2
+
+[node name="Collectible4" parent="." index="72" instance=ExtResource( 7 )]
+editor/display_folded = true
+position = Vector2( 901.898, 310.654 )
+
+[node name="Body" parent="Collectible4" index="0"]
+essence_color = 3
+
+[node name="AnimationPlayer" parent="Collectible4/Body" index="1"]
+anims/shrink = SubResource( 2 )
+
+[node name="Item_Spawner" parent="." index="73" instance=ExtResource( 8 )]
+position = Vector2( 982.067, 118.583 )
+
+[node name="Body" parent="Item_Spawner" index="0"]
+object_to_spawn = ExtResource( 9 )
+
+[node name="Z_Axis" parent="Item_Spawner/Body" index="0"]
+position = Vector2( 0, -43.4247 )
+
+[node name="Item_Spawner2" parent="." index="74" instance=ExtResource( 8 )]
+position = Vector2( 1242.62, 125.264 )
+
+[node name="Body" parent="Item_Spawner2" index="0"]
+object_to_spawn = ExtResource( 10 )
+
+[node name="Z_Axis" parent="Item_Spawner2/Body" index="0"]
+position = Vector2( 0, -55.116 )
+
+[node name="Actor" parent="." index="75" instance=ExtResource( 11 )]
+position = Vector2( 2671.17, 261.698 )
+
+[node name="Vertical_Sliding_Door" parent="." index="76" instance=ExtResource( 12 )]
+position = Vector2( -617.088, -145.921 )
+
+[node name="Level_Exit" parent="Vertical_Sliding_Door/Body" index="8"]
+level_destination = "0002"
+destination_entrance = 2
+
+[node name="Player_Transition_Animations" parent="Vertical_Sliding_Door/Body/Level_Exit" index="0"]
+animation = 2
+direction = 3
+
+[node name="Locked_Vertical_Sliding_Door" parent="." index="77" instance=ExtResource( 13 )]
+position = Vector2( -906.909, -91.86 )
+
+[node name="Level_Exit" parent="Locked_Vertical_Sliding_Door/Body" index="8"]
+level_destination = "0002"
+destination_entrance = 2
+
+[node name="Player_Transition_Animations" parent="Locked_Vertical_Sliding_Door/Body/Level_Exit" index="0"]
+animation = 2
+direction = 3
+
+[node name="Grabbable_Actor" parent="." index="78" instance=ExtResource( 14 )]
+position = Vector2( 1715.65, 259.092 )
+
+[node name="Body" parent="Grabbable_Actor" index="0"]
+gravity_force = 1.0
+ground_friction = 10.0
+air_friction = 7.0
+bounciness = 0.6
+
+[node name="Grabbable" parent="Grabbable_Actor/Body" index="0"]
+thrown_force = 1000.0
+
+[node name="Body_Shape" parent="Grabbable_Actor/Body" index="2"]
+shape = SubResource( 3 )
+
+[node name="Z_Height" parent="Grabbable_Actor/Body/Z_Axis" index="0"]
+position = Vector2( 0, -45.6 )
+
+[node name="Sprite" type="Sprite" parent="Grabbable_Actor/Body/Z_Axis/Sprite_Offset" index="0"]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 15 )
+
+[node name="Puzzle" parent="." index="79" instance=ExtResource( 16 )]
+position = Vector2( 2058.75, 207.105 )
+
+[node name="Button" parent="Puzzle" index="1"]
+editor/display_folded = false
+position = Vector2( -114.831, 94.325 )
+
+[node name="Body" parent="Puzzle/Button" index="0"]
+switch_type = 2
+timed_timer = 3.0
+
+[node name="Button2" parent="Puzzle" index="2"]
+editor/display_folded = false
+position = Vector2( 155.841, 102.527 )
+
+[node name="Body" parent="Puzzle/Button2" index="0"]
+switch_type = 2
+timed_timer = 3.0
+
+
+[editable path="Pushable Box65"]
+
+[editable path="Pushable Box81"]
+
+[editable path="Level_Entrance1"]
+
+[editable path="Area"]
+
+[editable path="Area/Z_Axis"]
+
+[editable path="Area/Level_Exit"]
+
+[editable path="Level_Entrance2"]
+
+[editable path="Collectible3"]
+
+[editable path="Collectible4"]
+
+[editable path="Item_Spawner"]
+
+[editable path="Item_Spawner2"]
+
+[editable path="Vertical_Sliding_Door"]
+
+[editable path="Vertical_Sliding_Door/Body/Level_Exit"]
+
+[editable path="Locked_Vertical_Sliding_Door"]
+
+[editable path="Locked_Vertical_Sliding_Door/Body/Level_Exit"]
+
+[editable path="Grabbable_Actor"]
+
+[editable path="Grabbable_Actor/Body/Z_Axis"]
+
+[editable path="Puzzle"]
+
+[editable path="Puzzle/Button"]
+
+[editable path="Puzzle/Button2"]

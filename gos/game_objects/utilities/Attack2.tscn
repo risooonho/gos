@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game_objects/utilities/Attack.gd" type="Script" id=1]
+[ext_resource path="res://game_objects/utilities/Attack_Hitbox.tscn" type="PackedScene" id=2]
+
+[node name="Attack" type="Position2D"]
+
+script = ExtResource( 1 )
+stamina_cost = 0
+startup_time = 0
+owner_endlag = 0
+owner_knockback = Vector2( 0, 0 )
+
+[node name="Disjoint_XY_Offset" type="Position2D" parent="." index="0"]
+
+[node name="Attack_Hitbox" parent="Disjoint_XY_Offset" index="0" instance=ExtResource( 2 )]
+
+element = 0
+
+[node name="Disjoint_Z_Offset" type="Position2D" parent="." index="1"]
+
+
+[editable path="Disjoint_XY_Offset/Attack_Hitbox"]

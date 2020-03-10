@@ -1,0 +1,35 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://game_objects/actors/attacks/movesets/Moveset.gd" type="Script" id=1]
+[ext_resource path="res://game_objects/actors/attacks/projectiles/Kinesis_Ball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_objects/actors/attacks/movesets/normal_moveset/ground_standard_1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game_objects/actors/attacks/movesets/normal_moveset/ground_standard_2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_objects/actors/attacks/movesets/normal_moveset/ground_standard_3.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game_objects/actors/attacks/movesets/normal_moveset/ground_forward_1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game_objects/actors/attacks/movesets/normal_moveset/ground_forward_2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game_objects/actors/attacks/movesets/normal_moveset/ground_forward_3.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game_objects/actors/attacks/movesets/normal_moveset/ground_setup.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game_objects/actors/attacks/movesets/normal_moveset/ground_special.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game_objects/actors/attacks/movesets/normal_moveset/aerial_standard.tscn" type="PackedScene" id=11]
+[ext_resource path="res://game_objects/actors/attacks/movesets/normal_moveset/aerial_forward.tscn" type="PackedScene" id=12]
+[ext_resource path="res://game_objects/actors/attacks/movesets/normal_moveset/aerial_setup.tscn" type="PackedScene" id=13]
+[ext_resource path="res://game_objects/actors/attacks/movesets/normal_moveset/aerial_special.tscn" type="PackedScene" id=14]
+[ext_resource path="res://game_objects/actors/attacks/movesets/normal_moveset/spin_attack.tscn" type="PackedScene" id=15]
+
+[node name="Moveset" type="Node"]
+script = ExtResource( 1 )
+projectile = ExtResource( 2 )
+ground_standard_1 = ExtResource( 3 )
+ground_standard_2 = ExtResource( 4 )
+ground_standard_3 = ExtResource( 5 )
+ground_forward_1 = ExtResource( 6 )
+ground_forward_2 = ExtResource( 7 )
+ground_forward_3 = ExtResource( 8 )
+ground_setup = ExtResource( 9 )
+ground_special = ExtResource( 10 )
+aerial_standard = ExtResource( 11 )
+aerial_forward = ExtResource( 12 )
+aerial_setup = ExtResource( 13 )
+aerial_special = ExtResource( 14 )
+spin_attack = ExtResource( 15 )
+

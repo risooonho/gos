@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://game_objects/actors/puzzles/battles/Battle.gd" type="Script" id=1]
+[ext_resource path="res://game_objects/actors/puzzles/battles/Battle_Controller.gd" type="Script" id=2]
+[ext_resource path="res://game_objects/actors/objects/Collectibles/Heart_Collectible.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game_objects/utilities/Result.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_objects/actors/characters/enemy/Basic_Enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game_objects/primitive/Terrain.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 65.0914, 710.132 )
+
+[node name="Battle" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Battle_Controller" type="Node" parent="."]
+
+[node name="Body" type="Node2D" parent="Battle_Controller"]
+script = ExtResource( 2 )
+item_to_drop = ExtResource( 3 )
+
+[node name="Result" parent="Battle_Controller/Body" instance=ExtResource( 4 )]
+
+[node name="Basic_Enemy" parent="." instance=ExtResource( 5 )]
+
+[node name="Body" parent="Basic_Enemy" index="0"]
+editor/display_folded = true
+bounciness = 0.9
+
+[node name="Terrain" parent="." instance=ExtResource( 6 )]
+position = Vector2( -654.559, -5.0351 )
+
+[node name="Body_Shape" parent="Terrain/Body" index="1"]
+shape = SubResource( 1 )
+
+[node name="Z_Height" parent="Terrain/Body/Z_Axis" index="0"]
+position = Vector2( 0, -5000 )
+
+
+[editable path="Basic_Enemy"]
+
+[editable path="Terrain"]
+
+[editable path="Terrain/Body/Z_Axis"]

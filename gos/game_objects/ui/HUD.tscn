@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://game_objects/ui/HUD_Controller.gd" type="Script" id=1]
+[ext_resource path="res://game_objects/ui/dialogue_box/Dialogue_Box.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_objects/ui/dialogue_box/Dialogue_Text.gd" type="Script" id=3]
+[ext_resource path="res://game_objects/ui/ui_elements/Gameplay_HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_objects/ui/Cutscene_Borders.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game_objects/ui/ui_elements/Area_Name.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game_objects/ui/ui_elements/Fade_Out_In.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game_objects/ui/pause/Pause.tscn" type="PackedScene" id=8]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Dialogue_Box" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+margin_left = 634.0
+margin_top = 587.0
+margin_right = 674.0
+margin_bottom = 627.0
+
+[node name="Dialogue" parent="Dialogue_Box" index="2"]
+script = ExtResource( 3 )
+
+[node name="Input_Arrow" parent="Dialogue_Box" index="4"]
+editor/display_folded = true
+
+[node name="Gameplay_HUD" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
+
+[node name="Cutscene_Borders" parent="." instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.945098 )
+
+[node name="Area_Name" parent="." instance=ExtResource( 6 )]
+editor/display_folded = true
+margin_top = 130.0
+margin_bottom = -540.0
+
+[node name="Fade_Out_In" parent="." instance=ExtResource( 7 )]
+editor/display_folded = true
+
+[node name="Pause" parent="." instance=ExtResource( 8 )]
+
+
+[editable path="Dialogue_Box"]
+
+[editable path="Gameplay_HUD"]
+
+[editable path="Gameplay_HUD/Heart_Bar"]
+
+[editable path="Area_Name"]
+
+[editable path="Fade_Out_In"]

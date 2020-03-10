@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://game_objects/primitive/Actor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game_objects/actors/objects/Flammable_Wall.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 83.4943, 43.8878 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 78.0528, 41.1671 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 97.098, 62.9331 )
+
+[node name="Flammable_Wall" instance=ExtResource( 1 )]
+
+[node name="Body" parent="." index="0"]
+collision_mask = 7
+script = ExtResource( 2 )
+stationary = true
+terminal_velocity = Vector3( 3000, 3000, -2000 )
+
+[node name="Body_Shape" parent="Body" index="0"]
+shape = SubResource( 1 )
+
+[node name="Area_Shape" parent="Body/Hurtbox" index="0"]
+shape = SubResource( 2 )
+
+[node name="Z_Height" parent="Body/Hurtbox/Z_Axis" index="0"]
+position = Vector2( 0, -157.803 )
+
+[node name="Detector_Shape" parent="Body/Z_Axis_Detector" index="0"]
+shape = SubResource( 3 )
+
+[node name="Z_Height" parent="Body/Z_Axis" index="0"]
+position = Vector2( 0, -319.688 )
+
+
+[editable path="Body/Hurtbox"]
+
+[editable path="Body/Hurtbox/Z_Axis"]
+
+[editable path="Body/Z_Axis"]

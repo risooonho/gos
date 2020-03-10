@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game_objects/utilities/Attack_Hitbox.tscn" type="PackedScene" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40.3329, 32.8996 )
+
+[node name="Attack_Hitbox" instance=ExtResource( 1 )]
+knockback_style = 0
+camera_shake = 2
+hitbox_duration = 0.1
+damage = 3.0
+knockback = Vector2( 1200, 600 )
+knockback_duration = 0.3
+element = 1
+
+[node name="Area_Shape" parent="." index="0"]
+shape = SubResource( 1 )
+
+[node name="Z_Axis" parent="." index="1"]
+position = Vector2( 0, 7.60004 )
+
+[node name="Z_Height" parent="Z_Axis" index="0"]
+position = Vector2( 0, -51.6942 )
+
+
+[editable path="Z_Axis"]

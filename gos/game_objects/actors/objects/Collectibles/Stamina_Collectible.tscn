@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://game_objects/actors/objects/Collectible.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game_objects/actors/objects/Collectibles/Stamina_Collectible.gd" type="Script" id=2]
+[ext_resource path="res://assets/objects/collectibles/stamina_collectible_glow.png" type="Texture" id=3]
+[ext_resource path="res://assets/objects/collectibles/stamina_collectible.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "glow"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Z_Axis/Sprite_Offset/inner_glow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.7 ),
+"transitions": PoolRealArray( 0.34151, 3.03143, 1 ),
+"update": 0,
+"values": [ Vector2( 0.1, 0.1 ), Vector2( 1, 1 ), Vector2( 0.1, 0.1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Z_Axis/Sprite_Offset/inner_glow:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.0470588 ), Color( 1, 1, 1, 0.729412 ), Color( 1, 1, 1, 0.235294 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Z_Axis/Sprite_Offset/outer_glow2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.7 ),
+"transitions": PoolRealArray( 0.31864, 1.7411, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Z_Axis/Sprite_Offset/outer_glow2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.4 ), Color( 1, 1, 1, 0.780392 ), Color( 1, 1, 1, 0.470588 ) ]
+}
+
+[node name="Collectible" instance=ExtResource( 1 )]
+
+[node name="Body" parent="." index="0"]
+script = ExtResource( 2 )
+
+[node name="Shadow_Offset" parent="Body" index="6"]
+position = Vector2( 0, 14.6302 )
+
+[node name="Shadow" parent="Body/Shadow_Offset" index="0"]
+position = Vector2( 0, 0.780273 )
+scale = Vector2( 2.74384, 2.09753 )
+
+[node name="outer_glow2" type="Position2D" parent="Body/Z_Axis/Sprite_Offset" index="0"]
+
+[node name="outer_glow" type="Sprite" parent="Body/Z_Axis/Sprite_Offset/outer_glow2" index="0"]
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 3 )
+
+[node name="Sprite" parent="Body/Z_Axis/Sprite_Offset" index="1"]
+texture = ExtResource( 4 )
+
+[node name="inner_glow" type="Position2D" parent="Body/Z_Axis/Sprite_Offset" index="2"]
+modulate = Color( 1, 1, 1, 0.558824 )
+scale = Vector2( 0.984465, 0.984465 )
+
+[node name="inner_glow2" type="Sprite" parent="Body/Z_Axis/Sprite_Offset/inner_glow" index="0"]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 3 )
+
+[node name="Stamina_Collectible_Anims" type="AnimationPlayer" parent="Body" index="8"]
+anims/glow = SubResource( 1 )
+
+
+[editable path="Body/Hurtbox"]
+
+[editable path="Body/Hurtbox/Z_Axis"]
+
+[editable path="Body/Z_Axis"]

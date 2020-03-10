@@ -1,0 +1,73 @@
+{
+	"Force" : 0,
+	"Random": 0,
+	"Nodes" :
+	 [
+		{
+			"id"      : 0,
+			"actor_id": 0,
+			"name"    : "- Director -",
+			"text"    : "o hai there.",
+			"next_id" : 1,
+			"effect"  : "none",
+			"end_flag": 0,
+			"choices" : [
+				
+				{
+					"text"    : "Yes",
+					"next_id" : 1
+				},
+
+				{
+					"text"    : "No",
+					"next_id" : -1
+				}
+			]
+		},
+
+		{
+			"id"      : 1,
+			"actor_id": 0,
+			"name"    : "- Vanylla -",
+			"text"    : "???",
+			"next_id" : 2,
+			"effect"  : "none",
+			"end_flag": 0,
+			"choices" : []
+		},
+
+		{
+			"id"      : 2,
+			"actor_id": 0,
+			"name"    : "- Director -",
+			"text"    : "I see.",
+			"next_id" : 3,
+			"effect"  : "none",
+			"end_flag": 0,
+			"choices" : []
+		},
+
+			{
+			"id"      : 3,
+			"actor_id": 0,
+			"name"    : "- Vanylla -",
+			"text"    : ":(...",
+			"next_id" : 4,
+			"effect"  : "none",
+			"end_flag": 0,
+			"choices" : []
+		},
+		
+		{
+			"id"      : 4,
+			"actor_id": 0,
+			"name"    : "",
+			"text"    : "just a test to see how much of this i can fit aaaaaaasdfnsdjfnsdkjfgnwserughnsdfuixghers",
+			"next_id" : -1,
+			"effect"  : "none",
+			"end_flag": 0,
+			"choices" : []
+		},
+	]
+
+}

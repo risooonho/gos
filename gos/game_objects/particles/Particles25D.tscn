@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game_objects/properties/Draw_Priority_Setting.tscn" type="PackedScene" id=1]
+
+[node name="Particles2D" type="Particles2D"]
+
+[node name="Draw_Priority_Point" type="Position2D" parent="."]
+
+[node name="Draw_Priority_Setting" parent="." instance=ExtResource( 1 )]
+

@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://game_objects/particles/Particle_Group.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game_objects/particles/objects/Explosion_Outer_Ring.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_objects/particles/objects/Explosion_Center.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game_objects/particles/objects/Flash.tscn" type="PackedScene" id=4]
+
+[node name="Particle_Group" instance=ExtResource( 1 )]
+
+[node name="Explosion_Outer_Ring" parent="Z_Axis" index="1" instance=ExtResource( 2 )]
+
+[node name="Draw_Priority_Point" parent="Z_Axis/Explosion_Outer_Ring" index="0"]
+position = Vector2( 0, 146.036 )
+
+[node name="Particles2D" parent="Z_Axis/Explosion_Outer_Ring/Z_Axis" index="1"]
+emitting = false
+one_shot = true
+
+[node name="Explosion_Outer_Ring2" parent="Z_Axis" index="2" instance=ExtResource( 2 )]
+
+[node name="Draw_Priority_Point" parent="Z_Axis/Explosion_Outer_Ring2" index="0"]
+position = Vector2( 0, -10.3389 )
+
+[node name="Particles2D" parent="Z_Axis/Explosion_Outer_Ring2/Z_Axis" index="1"]
+rotation = -1.5708
+emitting = false
+one_shot = true
+
+[node name="Explosion_Center" parent="Z_Axis" index="3" instance=ExtResource( 3 )]
+
+[node name="Draw_Priority_Point" parent="Z_Axis/Explosion_Center" index="0"]
+position = Vector2( 0, 42.6478 )
+
+[node name="Particles2D" parent="Z_Axis/Explosion_Center/Z_Axis" index="1"]
+emitting = false
+one_shot = true
+
+[node name="Flash" parent="Z_Axis" index="4" instance=ExtResource( 4 )]
+
+[node name="Draw_Priority_Point" parent="Z_Axis/Flash" index="0"]
+position = Vector2( 0, 28.4319 )
+
+
+[editable path="Z_Axis/Explosion_Outer_Ring"]
+
+[editable path="Z_Axis/Explosion_Outer_Ring2"]
+
+[editable path="Z_Axis/Explosion_Center"]
+
+[editable path="Z_Axis/Flash"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game_objects/utilities/Attack2.tscn" type="PackedScene" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 52.1051, 44.6149 )
+
+[node name="Ground_Standard_1" index="0" instance=ExtResource( 1 )]
+stamina_cost = 20.0
+startup_time = 0.05
+owner_endlag = 0.45
+owner_knockback = Vector2( 880, 0 )
+
+[node name="Disjoint_XY_Offset" parent="." index="0"]
+position = Vector2( 79.054, 0 )
+
+[node name="Attack_Hitbox" parent="Disjoint_XY_Offset" index="0"]
+editor/display_folded = true
+knockback_style = 0
+camera_shake = 2
+hitbox_duration = 0.2
+damage = 6.0
+knockback = Vector2( 3400, 400 )
+knockback_duration = 0.6
+
+[node name="Area_Shape" parent="Disjoint_XY_Offset/Attack_Hitbox" index="0"]
+shape = SubResource( 1 )
+
+[node name="Z_Height" parent="Disjoint_XY_Offset/Attack_Hitbox/Z_Axis" index="0"]
+position = Vector2( 0, -68.0187 )
+
+
+[editable path="Disjoint_XY_Offset/Attack_Hitbox"]
+
+[editable path="Disjoint_XY_Offset/Attack_Hitbox/Z_Axis"]

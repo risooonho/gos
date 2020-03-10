@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game_objects/utilities/Attack2.tscn" type="PackedScene" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 79.1325
+
+[node name="Ground_Standard_1" instance=ExtResource( 1 )]
+
+stamina_cost = 0
+startup_time = 0.3
+owner_endlag = 0.5
+owner_knockback = Vector2( 0, 1300 )
+
+[node name="Disjoint_XY_Offset" parent="." index="0"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="Attack_Hitbox" parent="Disjoint_XY_Offset" index="0"]
+
+knockback_style = 1
+hitbox_duration = 0.4
+damage = 1.0
+knockback = Vector2( 350, 1100 )
+knockback_duration = 0.3
+triggers_switches = true
+element = 1
+
+[node name="Area_Shape" parent="Disjoint_XY_Offset/Attack_Hitbox" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="Z_Height" parent="Disjoint_XY_Offset/Attack_Hitbox/Z_Axis" index="0"]
+
+position = Vector2( 0, -68.0187 )
+_sections_unfolded = [ "Transform" ]
+
+
+[editable path="Disjoint_XY_Offset/Attack_Hitbox"]
+[editable path="Disjoint_XY_Offset/Attack_Hitbox/Z_Axis"]

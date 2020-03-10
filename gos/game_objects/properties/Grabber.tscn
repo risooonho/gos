@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game_objects/properties/Grabber.gd" type="Script" id=1]
+
+[node name="Grabber" type="Node"]
+
+script = ExtResource( 1 )
+
+[node name="XY_Offset" type="Position2D" parent="." index="0"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="Z_Offset" type="Position2D" parent="XY_Offset" index="0"]
+
+

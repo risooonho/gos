@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game_objects/properties/Resistances.gd" type="Script" id=1]
+
+[node name="Resistances" type="Node"]
+
+script = ExtResource( 1 )
+physical = 1
+fire = 1
+water = 1
+ice = 1
+wind = 1
+thunder = 1
+earth = 1
+light = 1
+dark = 1
+explosion = 1
+earth = 1
+
+

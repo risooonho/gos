@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://game_objects/rooms/Room_Controller.gd" type="Script" id=1]
+[ext_resource path="res://game_objects/ui/HUD.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_objects/utilities/Cutscene_Manager.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game_objects/utilities/Cameraman.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_objects/actors/characters/vanylla/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game_objects/properties/Draw_Priority.gd" type="Script" id=6]
+[ext_resource path="res://game_objects/utilities/Screen_Freezer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game_objects/rooms/Level_0001.tscn" type="PackedScene" id=8]
+
+[node name="Game" type="Node"]
+script = ExtResource( 1 )
+
+[node name="HUD" parent="." instance=ExtResource( 2 )]
+
+[node name="Cutscene_Manager" parent="." instance=ExtResource( 3 )]
+
+[node name="Cameraman" parent="." instance=ExtResource( 4 )]
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+
+[node name="Body" parent="Player" index="0"]
+editor/display_folded = true
+collision_mask = 3
+
+[node name="Draw_Priority_Setting" parent="Player/Body" index="5"]
+script = ExtResource( 6 )
+
+[node name="Body_Shape" parent="Player/Body" index="6"]
+script = null
+
+[node name="Particle_Emitter" parent="Player/Body/Z_Axis/Sprite_Offset" index="1"]
+position = Vector2( 0, 0 )
+
+[node name="Screen_Freezer" parent="." instance=ExtResource( 7 )]
+
+[node name="World" parent="." instance=ExtResource( 8 )]
+
+
+[editable path="HUD"]
+
+[editable path="Player"]
+
+[editable path="World"]
